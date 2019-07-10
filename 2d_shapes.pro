@@ -33,7 +33,7 @@ HEADERS += \
         mainwindow.h
 
 FORMS += \
-        mainwindow.ui
+        mainwindow.ui \
         shapes.txt
 
 # Default rules for deployment.
