@@ -26,13 +26,15 @@ CONFIG += c++11
 
 SOURCES += \
         main.cpp \
-        mainwindow.cpp
+        mainwindow.cpp \
+        vector_doubles.h \
 
 HEADERS += \
         mainwindow.h
 
 FORMS += \
         mainwindow.ui
+        shapes.txt
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
