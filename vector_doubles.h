@@ -1,10 +1,10 @@
-// the insert method is not done yet. having a bit of trouble
-// hello this is a comment 
 /*
  * vector.h
  *
  *  Created on: Dec 1, 2016
+ *  Edited
  *      Author: jkath
+ *      edited: Albert Le
  */
 
 #ifndef VECTOR_H_
@@ -160,9 +160,10 @@ public:
     }
 
     // NEEDS TO BE FIXED
+    // status: FIXED
     iterator insert(iterator p, const double &val) // insert a new element val before p
     {
-        double tempVal;
+        iterator tempPtr = nullptr;
 
         // make sure we have space
         if (size_v >= space)
@@ -170,20 +171,16 @@ public:
             reserve(1);
         }
 
-        double* tempPtr = &elem[size_v - 1];
-
-        // this probably doesn't work
-        // copy(p, tempPtr, p + 1);
-
-        // for (iterator tempPtr = p; *tempPtr < elem[space - 1]; ++tempPtr)
-        // {
-        //     tempVal = *(tempPtr + 1);
-        //     *(tempPtr + 1) = *tempPtr;
-        // }
+        // pick the last free element, and then shift all elements of the array to the right
+        // until you hit wherever the p iterator is pointing to
+        for (tempPtr = &elem[size_v]; tempPtr > p; --tempPtr)
+        {
+            *tempPtr = *(tempPtr - 1);
+        }
 
         tempPtr = nullptr;
-
-        // the place to put value
+        
+        // the place to put the value
         *p = val;
 
         // copy element one position to the right
