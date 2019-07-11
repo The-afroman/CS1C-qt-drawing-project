@@ -1,5 +1,5 @@
 // the insert method is not done yet. having a bit of trouble
-
+// hello this is a comment 
 /*
  * vector.h
  *
