@@ -2,7 +2,7 @@
  * vector.h
  *
  *  Created on: Dec 1, 2016
- *  Edited
+ *  Edited on : July 10, 2019
  *      Author: jkath
  *      edited: Albert Le
  */
