@@ -11,6 +11,8 @@
 #define VECTOR_H_
 
 #include <algorithm> // std::copy std::rotate
+#include <iostream>  // std::cout std::endl
+
 using std::copy;
 using std::rotate;
 using std::cout;
