@@ -26,11 +26,13 @@ CONFIG += c++11
 
 SOURCES += \
         main.cpp \
-        mainwindow.cpp \
-        vector_doubles.h \
+        mainwindow.cpp \ \
+    shape.cpp
 
 HEADERS += \
-        mainwindow.h
+        mainwindow.h \
+        shape.h \
+        vector_doubles.h
 
 FORMS += \
         mainwindow.ui \
