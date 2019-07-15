@@ -107,7 +107,7 @@ void Polyline::draw(const int translate_x, const int translate_y)
     getQpainter().save();
     getQpainter().translate(translate_x, translate_y);
 
-    getQpainter().drawPolyline(points.getElem(), points.size());
+    getQpainter().drawPolyline(points.begin(), points.size());
 
     getQpainter().restore();
 }
@@ -127,7 +127,7 @@ void Polygon::draw(const int translate_x, const int translate_y)
     getQpainter().save();
     getQpainter().translate(translate_x, translate_y);
 
-    getQpainter().drawPolygon(points.getElem(), points.size());
+    getQpainter().drawPolygon(points.begin(), points.size());
 
     getQpainter().restore();
 }
@@ -197,17 +197,17 @@ void Text::setText(const QRect& tO, const QString t, const QColor c, const Qt::A
     return;
 }
 
-void Text::draw(const int translate_x, const int translate_y)
-{
-    getQpainter().setPen(getPen());
-    getQpainter().setBrush(getBrush());
+//void Text::draw(const int translate_x, const int translate_y)
+//{
+//    getQpainter().setPen(getPen());
+//    getQpainter().setBrush(getBrush());
 
-    getQpainter().save();
-    getQpainter().translate(translate_x, translate_y);
+//    getQpainter().save();
+//    getQpainter().translate(translate_x, translate_y);
 
 
-    //Not sure what parameters to use
+//    //Not sure what parameters to use
 //    getQpainter().drawText(textObj, text);
 
-    getQpainter().restore();
-}
+//    getQpainter().restore();
+//}
