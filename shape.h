@@ -31,8 +31,8 @@ public:
 
     void defaultStyle();
 
-    virtual void draw(const int translate_x, const int translate_y) = 0;
-    virtual void move() = 0;
+    virtual void draw(const int translate_x = 0, const int translate_y = 0) = 0;
+//    virtual void move() = 0;
 
 
 protected:
@@ -57,7 +57,7 @@ public:
 
     void setPoints(const QPoint& pointBegin, const QPoint& pointEnd);
 
-    void draw(const int translate_x, const int translate_y);
+    void draw(const int translate_x = 0, const int translate_y = 0);
 
 private:
     QPoint pointBegin;
@@ -74,7 +74,7 @@ public:
 
     void setPoints(const QPoint& point);
 
-    void draw(const int translate_x, const int translate_y);
+    void draw(const int translate_x = 0, const int translate_y = 0);
 
 private:
     vector<QPoint> points;
@@ -89,7 +89,7 @@ public:
 
     void setPoints(const QPoint& points);
 
-    void draw(const int translate_x, const int translate_y);
+    void draw(const int translate_x = 0, const int translate_y = 0);
 
 private:
     vector<QPoint> points;
@@ -106,7 +106,7 @@ public:
     bool isSquare() const;
     void setRect(const QRect& rect);
 
-    void draw(const int translate_x, const int translate_y);
+    void draw(const int translate_x = 0, const int translate_y = 0);
 
 private:
     QRect rect;
@@ -123,7 +123,7 @@ public:
     bool isCircle() const;
     void setEllipse(const QRect& e);
 
-    void draw(const int translate_x, const int translate_y);
+    void draw(const int translate_x = 0, const int translate_y = 0);
 
 private:
     QRect ellipse;
@@ -139,7 +139,7 @@ public:
     void setText(const QRect& tO, const QString text, const QColor c, const Qt::AlignmentFlag a,
                  const int pS, const QString f, const QFont::Style s, const QFont::Weight w);
 
-    void draw(const int translate_x, const int translate_y);
+    void draw(const int translate_x = 0, const int translate_y = 0);
 
 private:
     QRect textObj;
