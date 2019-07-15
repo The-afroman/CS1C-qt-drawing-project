@@ -42,14 +42,16 @@ void readInShapes()
   fin.open("shapes.txt");
 
 
+  fin >> garbage;
+  fin >> getShapeID;
 
-  while (counter < 8)
+  fin >> garbage;
+  fin >> getShapeType;
+
+
+  while (!fin.eof())
   {
-    fin >> garbage;
-    fin >> getShapeID;
 
-    fin >> garbage;
-    fin >> getShapeType;
 
     if (fin)
     {
@@ -371,6 +373,11 @@ void readInShapes()
 
 
     counter++;
+    fin >> garbage;
+    fin >> getShapeID;
+
+    fin >> garbage;
+    fin >> getShapeType;
 
   }
 
