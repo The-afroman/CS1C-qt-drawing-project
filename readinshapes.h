@@ -1,12 +1,16 @@
+#ifndef READINSHAPES_H
+#define READINSHAPES_H
+
 #include <iostream>
 #include <fstream>
-#include "readinshapes.h"
+
 using namespace std;
 
 
 void readInShapes()
 {
   ifstream fin;
+
   int getShapeID = 0;
   string getShapeType = "NOT SET";
   int dimension1 = 0;
@@ -376,3 +380,6 @@ void readInShapes()
   fin.close();
 
 }
+
+
+#endif // READINSHAPES_H

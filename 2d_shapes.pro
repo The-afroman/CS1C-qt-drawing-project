@@ -27,11 +27,11 @@ CONFIG += c++11
 SOURCES += \
         main.cpp \
         mainwindow.cpp \ \
-    readinshapes.cpp \
     shape.cpp
 
 HEADERS += \
         mainwindow.h \
+        readinshapes.h \
         shape.h \
         vector_doubles.h
 
