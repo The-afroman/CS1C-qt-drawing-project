@@ -84,7 +84,7 @@ class Polygon : public Shape
 {
 public:
     Polygon(QPaintDevice* device = nullptr, int id = -1) : Shape(device,id, ShapeType::Polygon){}
-    ~Polygon() {}
+    ~Polygon() override {}
 
     void setPoints(const QPoint& points);
 
@@ -100,7 +100,7 @@ class Rectangle : public Shape
 {
 public:
     Rectangle(QPaintDevice* device = nullptr, int id = -1) : Shape(device,id, ShapeType::Rectangle){}
-    ~Rectangle() {}
+    ~Rectangle() override {}
 
     bool isSquare() const;
     void setRect(const QRect& rect);
@@ -117,7 +117,7 @@ class Ellipse : public Shape
 {
 public:
     Ellipse(QPaintDevice* device = nullptr, int id = -1) : Shape(device,id, ShapeType::Ellipse){}
-    ~Ellipse() {}
+    ~Ellipse() override {}
 
     bool isCircle() const;
     void setEllipse(const QRect& e);
@@ -133,7 +133,7 @@ class Text : public Shape
 {
 public:
     Text(QPaintDevice* device = nullptr, int id = -1) : Shape(device,id, ShapeType::Text){}
-    ~Text() {}
+    ~Text() override {}
 
     void setText(const QRect& tO, const QString text, const QColor c, const Qt::AlignmentFlag a,
                  const int pS, const QString f, const QFont::Style s, const QFont::Weight w);

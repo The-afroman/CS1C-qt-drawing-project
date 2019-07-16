@@ -26,20 +26,22 @@ CONFIG += c++11
 
 SOURCES += \
         main.cpp \
-        mainwindow.cpp \ \
+        mainwindow.cpp \
     shape.cpp
 
 HEADERS += \
         mainwindow.h \
         readinshapes.h \
         shape.h \
-        vector_doubles.h
+    vector.h
 
 FORMS += \
-        mainwindow.ui \
-        shapes.txt
+        mainwindow.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+DISTFILES += \
+    shapes.txt
