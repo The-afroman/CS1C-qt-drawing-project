@@ -2,6 +2,9 @@
 
 /***********SHAPE CLASS************/
 
+Shape::~Shape()
+{}
+
 Shape::Shape(QPaintDevice *device, int id, ShapeType shape)
       : qpainter(device), id{id}, shape{shape}
 {

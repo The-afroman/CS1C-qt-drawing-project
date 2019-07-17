@@ -1,6 +1,6 @@
 #ifndef SHAPE_H
 #define SHAPE_H
-
+#include <QtCore>
 #include <QObject>
 #include <QPainter>
 #include <QWidget>
@@ -15,7 +15,7 @@ public:
 
     Shape(QPaintDevice* device = nullptr, int id = -1, ShapeType shape = ShapeType::NoShape);
 
-    virtual ~Shape() {}
+    virtual ~Shape();
 
     /*******GETTERS*********/
     ShapeType getShape() const;

@@ -1,34 +1,33 @@
 #include <iostream>
 #include <fstream>
-//#include "shape.h"
+#include "shape.h"
+#include <QDebug>
 
 using std::cout;
 using std::endl;
 
-enum shapes
+Shape::ShapeType convStr(std::string const& inString) 
 {
-   NoShape, Line, Polyline, Polygon, Rectangle, Square, Ellipse, Circle, Text
-};
-
-shapes convStr(std::string const& inString) 
-{
-    if(inString == "Line") return Line;
-    if(inString == "Polyline") return Polyline;
-    if(inString == "Polygon") return Polygon;
-    if(inString == "Rectangle") return Rectangle;
-    if(inString == "Square") return Square;
-    if(inString == "Ellipse") return Ellipse;
-    if(inString == "Circle") return Circle;
-    if(inString == "Text") return Text;
-    return NoShape;
+    if(inString == "Line") return Shape::ShapeType::Line;
+    if(inString == "Polyline") return Shape::ShapeType::Polyline;
+    if(inString == "Polygon") return Shape::ShapeType::Polygon;
+    if(inString == "Rectangle") return Shape::ShapeType::Rectangle;
+    if(inString == "Square") return Shape::ShapeType::Square;
+    if(inString == "Ellipse") return Shape::ShapeType::Ellipse;
+    if(inString == "Circle") return Shape::ShapeType::Circle;
+    if(inString == "Text") return Shape::ShapeType::Text;
+    return Shape::ShapeType::NoShape;
 }
+
+
 
 void getLine(std::ifstream& fin, int id)
 {
-    int dimension1, dimension2, dimension3, dimension4;
-    std::string getPenColor, getPenStyle, getPenWidth, 
+    int dimension1, dimension2, dimension3, dimension4, getPenWidth;
+    std::string getPenColor, getPenStyle, 
                 getPenCapStyle, getPenJoinStyle;
-    
+    Line retLine;
+
     fin.ignore(1000, ' ');
     fin >> dimension1;
     fin.ignore(1000, ' ');
@@ -56,20 +55,44 @@ void getLine(std::ifstream& fin, int id)
     fin.ignore(1000, '\n');
     fin.ignore(1000, '\n');
 
-    /*  TESTING
-    cout << endl;
-    cout << "SHAPE ID: " << id << endl;
-    cout << "SHAPE TYPE: " << endl;
-    cout << "DIMENSION1: " << dimension1 << endl;
-    cout << "DIMENSION2: " << dimension2 << endl;
-    cout << "DIMENSION3: " << dimension3 << endl;
-    cout << "DIMENSION4: " << dimension4 << endl;
-    cout << "PEN COLOR: " << getPenColor << endl;
-    cout << "PEN WIDTH: " << getPenWidth << endl;
-    cout << "PEN STYLE: " << getPenStyle << endl;
-    cout << "PEN CAP STYLE: " << getPenCapStyle << endl;
-    cout << "PEN JOIN SYLE: " << getPenJoinStyle << endl;
-    */
+    QPoint p1(dimension1, dimension2);
+    QPoint p2(dimension3, dimension4);
+
+    /* casting input strings to Qt-enums */
+    auto&& metaEnum = QMetaEnum::fromType<Qt::GlobalColor>();
+    // following line converts string to proper enum type
+    Qt::GlobalColor fetchColorEnum = static_cast<Qt::GlobalColor>(metaEnum.keyToValue(getPenColor.c_str()));
+
+    metaEnum = QMetaEnum::fromType<Qt::PenStyle>();
+    Qt::PenStyle fetchPenStyleEnum = static_cast<Qt::PenStyle>(metaEnum.keyToValue(getPenColor.c_str()));
+
+    metaEnum = QMetaEnum::fromType<Qt::PenCapStyle>();
+    Qt::PenCapStyle fetchPenCapStyleEnum = static_cast<Qt::PenCapStyle>(metaEnum.keyToValue(getPenColor.c_str()));
+    
+    metaEnum = QMetaEnum::fromType<Qt::PenJoinStyle>();
+    Qt::PenJoinStyle fetchPenJoinStyleEnum = static_cast<Qt::PenJoinStyle>(metaEnum.keyToValue(getPenColor.c_str()));
+
+    retLine.setPoints(p1, p2);
+    retLine.setShape(Shape::ShapeType::Line);
+    retLine.setId(id);
+    retLine.setPen(fetchColorEnum, getPenWidth, fetchPenStyleEnum, fetchPenCapStyleEnum, fetchPenJoinStyleEnum);
+
+    //return retLine;
+
+    /*  TESTING */
+    qDebug() << endl;
+    qDebug() << "SHAPE ID: " << id << endl;
+    qDebug() << "SHAPE TYPE: " << endl;
+    qDebug() << "DIMENSION1: " << dimension1 << endl;
+    qDebug() << "DIMENSION2: " << dimension2 << endl;
+    qDebug() << "DIMENSION3: " << dimension3 << endl;
+    qDebug() << "DIMENSION4: " << dimension4 << endl;
+    qDebug() << "PEN COLOR: " << getPenColor.c_str() << endl;
+    qDebug() << "PEN WIDTH: " << getPenWidth << endl;
+    qDebug() << "PEN STYLE: " << getPenStyle.c_str() << endl;
+    qDebug() << "PEN CAP STYLE: " << getPenCapStyle.c_str() << endl;
+    qDebug() << "PEN JOIN SYLE: " << getPenJoinStyle.c_str() << endl;
+
 }
 
 void getPolyLine(std::ifstream& fin, int id)
@@ -373,7 +396,7 @@ void inputShape(std::string fName)
     std::ifstream fin;
     std::string line;
     int shapeId;
-    shapes shape;
+    Shape::ShapeType shape;
     std::string shapeType;
 
     fin.open(fName);
@@ -387,25 +410,25 @@ while(fin)
     shapeType = line.substr(11);
 
     /* testing */
-    /*
-    cout << shapeId << endl;
-    cout << shapeType << endl;
-    */
+
+    qDebug() << shapeId << endl;
+    qDebug() << shapeType.c_str() << endl;
+
 
     shape = convStr(shapeType);
 
     switch(shape)
     {
-        case NoShape: break;
-        case Line: getLine(fin, shapeId); break;
-        case Polyline: getPolyLine(fin, shapeId); break;
-        case Polygon: getPolygon(fin, shapeId); break;
-        case Rectangle: getRectangle(fin, shapeId); break;
-        case Square: getSquare(fin, shapeId); break;
-        case Ellipse: getEllipse(fin, shapeId); break;
-        case Circle: getCircle(fin, shapeId); break;
-        case Text: getText(fin, shapeId); break;
-    };
+        case Shape::ShapeType::NoShape: break;
+        case Shape::ShapeType::Line: getLine(fin, shapeId); break;
+        case Shape::ShapeType::Polyline: getPolyLine(fin, shapeId); break;
+        case Shape::ShapeType::Polygon: getPolygon(fin, shapeId); break;
+        case Shape::ShapeType::Rectangle: getRectangle(fin, shapeId); break;
+        case Shape::ShapeType::Square: getSquare(fin, shapeId); break;
+        case Shape::ShapeType::Ellipse: getEllipse(fin, shapeId); break;
+        case Shape::ShapeType::Circle: getCircle(fin, shapeId); break;
+        case Shape::ShapeType::Text: getText(fin, shapeId); break;
+    }
 }
 fin.close();
 }
