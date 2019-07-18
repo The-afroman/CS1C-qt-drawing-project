@@ -8,7 +8,6 @@
 #include <QPen>
 #include <QFont>
 #include "vector.h"
-#include "renderarea.h"
 
 class Shape
 {
@@ -16,10 +15,8 @@ public:
     enum class ShapeType { NoShape, Line, Polyline, Polygon, Rectangle, Square, Ellipse, Circle, Text};
 
     Shape();
-
+    //Constructor
     Shape(QPaintDevice* device);
-
-//    Shape(QPaintDevice* device = nullptr, int id = -1, ShapeType shape = ShapeType::NoShape);
     //Constructor
 
     virtual ~Shape() {}
@@ -87,13 +84,9 @@ private:
 class Line: public Shape
 {
 public:
-
-    Line();
-
-    Line(QPaintDevice* device);
-
-
-//    Line(QPaintDevice* device = nullptr, int id = -1) : Shape{device,id, ShapeType::Line}{}
+    Line() : Shape() {}
+    //Constructor
+    Line(QPaintDevice* device) : Shape(device) {}
     //Constructor
 
     ~Line() override {}
@@ -116,11 +109,9 @@ private:
 class Polyline: public Shape
 {
 public:
-    Polyline();
-    Polyline(QPaintDevice* device);
-
-
-//    Polyline(QPaintDevice* device = nullptr, int id = -1) : Shape{device,id, ShapeType::Polyline}{}
+    Polyline() : Shape() {}
+    //Constructor
+    Polyline(QPaintDevice* device) : Shape(device) {}
     //Constructor
 
     ~Polyline() override {}
@@ -135,18 +126,16 @@ public:
     //Function to draw the polyline shape
 
 private:
-    vector<QPoint> points;
+    myVector<QPoint> points;
 };
 
 /***********POLYGON CLASS************/
 class Polygon : public Shape
 {
 public:
-    Polygon();
-    Polygon(QPaintDevice* device);
-
-
-//    Polygon(QPaintDevice* device = nullptr, int id = -1) : Shape(device,id, ShapeType::Polygon){}
+    Polygon() : Shape() {}
+    //Constructor
+    Polygon(QPaintDevice* device) : Shape(device) {}
     //Constructor
 
     ~Polygon() override {}
@@ -161,7 +150,7 @@ public:
     //Function to draw the polygon
 
 private:
-    vector<QPoint> points;
+    myVector<QPoint> points;
 };
 
 /***********RECTANGLE CLASS************/
@@ -169,12 +158,9 @@ private:
 class Rectangle : public Shape
 {
 public:
-    Rectangle();
-    Rectangle(QPaintDevice* device);
-
-
-
-//    Rectangle(QPaintDevice* device = nullptr, int id = -1) : Shape(device,id, ShapeType::Rectangle){}
+    Rectangle() : Shape() {}
+    //Constructor
+    Rectangle(QPaintDevice* device) : Shape(device) {}
     //Constructor
 
     ~Rectangle() override {}
@@ -203,9 +189,8 @@ class Ellipse : public Shape
 {
 public:
     Ellipse() : Shape() {}
+    //Constructor
     Ellipse(QPaintDevice* device) : Shape(device) {}
-
-//    Ellipse(QPaintDevice* device = nullptr, int id = -1) : Shape(device,id, ShapeType::Ellipse){}
     //Constructor
 
     ~Ellipse() override {}
