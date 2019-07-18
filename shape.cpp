@@ -39,6 +39,7 @@ void Shape::setBrush(Qt::GlobalColor c, Qt::BrushStyle bs)
     return;
 }
 
+/**********Other***********/
 void Shape::defaultStyle()
 {
     pen = Qt::SolidLine;
@@ -50,6 +51,11 @@ void Shape::defaultStyle()
 }
 
 /********GETTERS*********/
+int Shape::getId() const
+{
+    return id;
+}
+
 Shape::ShapeType Shape::getShape() const
 {
     return shape;
