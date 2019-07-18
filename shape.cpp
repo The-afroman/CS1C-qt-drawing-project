@@ -39,6 +39,7 @@ void Shape::setBrush(Qt::GlobalColor c, Qt::BrushStyle bs)
     return;
 }
 
+
 /**********Other***********/
 void Shape::defaultStyle()
 {
@@ -85,10 +86,11 @@ void Line::setPoints(const QPoint& pB, const QPoint& pE)
     return;
 }
 
-void Line::draw(const int translate_x, const int translate_y)
+void Line::draw(QPaintDevice* device, const int translate_x, const int translate_y)
 {
+    getQpainter().begin(device);
+
     getQpainter().setPen(getPen());
-    getQpainter().setBrush(getBrush());
 
     getQpainter().save();
     getQpainter().translate(translate_x, translate_y);
@@ -96,6 +98,8 @@ void Line::draw(const int translate_x, const int translate_y)
     getQpainter().drawLine(pointBegin, pointEnd);
 
     getQpainter().restore();
+
+    getQpainter().end();
 }
 
 /***********POLYLINE CLASS************/
@@ -105,10 +109,11 @@ void Polyline::setPoints(const QPoint& p)
     return;
 }
 
-void Polyline::draw(const int translate_x, const int translate_y)
+void Polyline::draw(QPaintDevice* device, const int translate_x, const int translate_y)
 {
+    getQpainter().begin(device);
+
     getQpainter().setPen(getPen());
-    getQpainter().setBrush(getBrush());
 
     getQpainter().save();
     getQpainter().translate(translate_x, translate_y);
@@ -116,6 +121,8 @@ void Polyline::draw(const int translate_x, const int translate_y)
     getQpainter().drawPolyline(points.begin(), points.size());
 
     getQpainter().restore();
+
+    getQpainter().end();
 }
 
 /***********POLYGON CLASS************/
@@ -125,8 +132,10 @@ void Polygon::setPoints(const QPoint &p)
     return;
 }
 
-void Polygon::draw(const int translate_x, const int translate_y)
+void Polygon::draw(QPaintDevice* device, const int translate_x, const int translate_y)
 {
+    getQpainter().begin(device);
+
     getQpainter().setPen(getPen());
     getQpainter().setBrush(getBrush());
 
@@ -136,6 +145,8 @@ void Polygon::draw(const int translate_x, const int translate_y)
     getQpainter().drawPolygon(points.begin(), points.size());
 
     getQpainter().restore();
+
+    getQpainter().end();
 }
 
 /***********RECTANGLE CLASS************/
@@ -150,8 +161,10 @@ bool Rectangle::isSquare() const
     return(rect.height() == rect.width());
 }
 
-void Rectangle::draw(const int translate_x, const int translate_y)
+void Rectangle::draw(QPaintDevice* device, const int translate_x, const int translate_y)
 {
+    getQpainter().begin(device);
+
     getQpainter().setPen(getPen());
     getQpainter().setBrush(getBrush());
 
@@ -161,6 +174,8 @@ void Rectangle::draw(const int translate_x, const int translate_y)
     getQpainter().drawRect(rect);
 
     getQpainter().restore();
+
+    getQpainter().end();
 }
 
 /***********ELLIPSE CLASS************/
@@ -174,8 +189,10 @@ void Ellipse::setEllipse(const QRect &e)
     ellipse = e;
 }
 
-void Ellipse::draw(const int translate_x, const int translate_y)
+void Ellipse::draw(QPaintDevice* device, const int translate_x, const int translate_y)
 {
+    getQpainter().begin(device);
+
     getQpainter().setPen(getPen());
     getQpainter().setBrush(getBrush());
 
@@ -185,6 +202,8 @@ void Ellipse::draw(const int translate_x, const int translate_y)
     getQpainter().drawEllipse(ellipse);
 
     getQpainter().restore();
+
+    getQpainter().end();
 }
 
 /***********TEXT CLASS************/
@@ -200,20 +219,29 @@ void Text::setText(const QRect& tO, const QString t, const QColor c, const Qt::A
     family = f;
     style = s;
     weight = w;
+
+    font.setFamily(family);
+    font.setStyle(style);
+    font.setPointSize(pointSize);
+    font.setWeight(weight);
+
     return;
 }
 
-//void Text::draw(const int translate_x, const int translate_y)
-//{
-//    getQpainter().setPen(getPen());
-//    getQpainter().setBrush(getBrush());
+void Text::draw(QPaintDevice* device, const int translate_x, const int translate_y)
+{
+    getQpainter().begin(device);
 
-//    getQpainter().save();
-//    getQpainter().translate(translate_x, translate_y);
+    getQpainter().setPen(color);
+    getQpainter().setFont(font);
 
+    getQpainter().save();
+    getQpainter().translate(translate_x, translate_y);
 
-//    //Not sure what parameters to use
-//    getQpainter().drawText(textObj, text);
+    //Not sure what parameters to use
+    getQpainter().drawText(textObj, align, text);
 
-//    getQpainter().restore();
-//}
+    getQpainter().restore();
+
+    getQpainter().end();
+}
