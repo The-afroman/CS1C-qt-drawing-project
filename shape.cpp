@@ -1,15 +1,6 @@
 #include "shape.h"
 
 /***********SHAPE CLASS************/
-
-//Shape::Shape(QPaintDevice *device, int id, ShapeType shape)
-//      : qpainter(device), id{id}, shape{shape}
-//{
-//    pen = Qt::SolidLine;
-//    brush = Qt::NoBrush;
-//}
-
-
 Shape::Shape()
 {
     id = -1;
@@ -99,20 +90,6 @@ QPainter& Shape::getQpainter()
 
 
 /***********LINE CLASS************/
-Line::Line()
-     : Shape()
-{
-    pointBegin = QPoint(0,0);
-    pointEnd = QPoint(0,0);
-}
-
-Line::Line(QPaintDevice *device)
-     : Shape(device)
-{
-    pointBegin = QPoint(0,0);
-    pointEnd = QPoint(0,0);
-}
-
 void Line::setPoints(const QPoint& pB, const QPoint& pE)
 {
     pointBegin = pB;
@@ -137,17 +114,6 @@ void Line::draw(QPaintDevice* device, const int translate_x, const int translate
 }
 
 /***********POLYLINE CLASS************/
-Polyline::Polyline()
-     : Shape()
-{
-}
-
-Polyline::Polyline(QPaintDevice *device)
-     : Shape(device)
-{
-}
-
-
 void Polyline::setPoints(const QPoint& p)
 {
     points.push_back(p);
@@ -171,18 +137,6 @@ void Polyline::draw(QPaintDevice* device, const int translate_x, const int trans
 }
 
 /***********POLYGON CLASS************/
-Polygon::Polygon()
-     : Shape()
-{
-}
-
-Polygon::Polygon(QPaintDevice *device)
-     : Shape(device)
-{
-}
-
-
-
 void Polygon::setPoints(const QPoint &p)
 {
     points.push_back(p);
@@ -207,19 +161,6 @@ void Polygon::draw(QPaintDevice* device, const int translate_x, const int transl
 }
 
 /***********RECTANGLE CLASS************/
-Rectangle::Rectangle()
-     : Shape()
-{
-    rect = QRect(0,0,0,0);
-}
-
-Rectangle::Rectangle(QPaintDevice *device)
-     : Shape(device)
-{
-       rect = QRect(0,0,0,0);
-}
-
-
 void Rectangle::setRect(const QRect &r)
 {
     rect = r;
