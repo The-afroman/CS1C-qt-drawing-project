@@ -6,7 +6,9 @@
 #include <QWidget>
 #include <QBrush>
 #include <QPen>
+#include <QFont>
 #include "vector.h"
+#include "renderarea.h"
 
 class Shape
 {
@@ -62,10 +64,8 @@ public:
     //Function that makes the qpainter's pen and brush a default Qt::SolidLine and NoBrush
     //Postcondition: pen = Qt::SolidLine,  brush = Qt::NoBrush, qpainter user setters for pen and brush
 
-    virtual void draw(const int translate_x = 0, const int translate_y = 0) = 0;
+    virtual void draw(QPaintDevice* device, const int translate_x = 0, const int translate_y = 0) = 0;
     //Pure Virtual function that will draw the shape
-
-//    virtual void move() = 0;
 
 protected:
     QPainter& getQpainter();
@@ -94,7 +94,7 @@ public:
     //Precondition: Two valid QPoint objects must be passed in
     //Postcondition: Sets pointBegin = pB, pointEnd = pE
 
-    void draw(const int translate_x = 0, const int translate_y = 0) override;
+    void draw(QPaintDevice* device, const int translate_x = 0, const int translate_y = 0) override;
     //Function to draw the line shape
 
 private:
@@ -117,7 +117,7 @@ public:
     //Precondition: A valid QPoint must be passed in
     //Postcondition: adds the QPoint to the vector
 
-    void draw(const int translate_x = 0, const int translate_y = 0) override;
+    void draw(QPaintDevice* device, const int translate_x = 0, const int translate_y = 0) override;
     //Function to draw the polyline shape
 
 private:
@@ -139,7 +139,7 @@ public:
     //Precondition: A valid QPoint must be passed in
     //Postcondition: adds the QPoint to the vector
 
-    void draw(const int translate_x = 0, const int translate_y = 0) override;
+    void draw(QPaintDevice* device, const int translate_x = 0, const int translate_y = 0) override;
     //Function to draw the polygon
 
 private:
@@ -167,7 +167,7 @@ public:
     //Precondition: A valid QRect object must be passed
     //Postcondition: sets rect = r
 
-    void draw(const int translate_x = 0, const int translate_y = 0) override;
+    void draw(QPaintDevice* device, const int translate_x = 0, const int translate_y = 0) override;
     //Function to draw the rectangle or square shape
 
 private:
@@ -195,7 +195,7 @@ public:
     //Precondition: A valid QRect object must be passed
     //Postcondition: sets ellipse = e
 
-    void draw(const int translate_x = 0, const int translate_y = 0) override;
+    void draw(QPaintDevice* device, const int translate_x = 0, const int translate_y = 0) override;
     //Function to draw an ellipse or circle shape
 
 private:
@@ -216,7 +216,7 @@ public:
                  const int pS, const QString f, const QFont::Style s, const QFont::Weight w);
    //Function to set all data members in text class
 
-    void draw(const int translate_x = 0, const int translate_y = 0) override;
+    void draw(QPaintDevice* device, const int translate_x = 0, const int translate_y = 0) override;
     //Function to draw the text
 
 private:
@@ -228,9 +228,8 @@ private:
     QString family;
     QFont::Style style;
     QFont::Weight weight;
+    QFont font;
 };
-
-
 
 
 #endif // SHAPE_H
