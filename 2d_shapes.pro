@@ -31,7 +31,6 @@ SOURCES += \
 
 HEADERS += \
         mainwindow.h \
-        readinshapes.h \
         shape.h \
     shapeParser.h \
     vector.h
