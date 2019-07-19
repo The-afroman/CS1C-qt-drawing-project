@@ -7,6 +7,7 @@
 #include <QBrush>
 #include <QPen>
 #include <QFont>
+#include <Qt>
 #include "vector.h"
 
 class Shape

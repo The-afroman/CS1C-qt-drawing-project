@@ -4,6 +4,7 @@
 #include "shape.h"
 #include "vector.h"
 #include <QtCore>
+#include <Qt>
 #include <QFile>
 #include <QString>
 #include <QBrush>
@@ -1332,7 +1333,7 @@ void inputShape(myVector<Shape*>& shapeVector)
               p2.setY(dimension4);
 
               //metaEnum = QMetaEnum::fromType<Qt::AlignmentFlag>();
-              //fetchAlignmentEnum = static_cast<Qt::AlignmentFlag>(metaEnum.keyToValue(getTextAlignment.c_str()));
+              //Qt::AlignmentFlag fetchAlignmentEnum = static_cast<Qt::AlignmentFlag>(metaEnum.keyToValue(getTextAlignment.c_str()));
               metaEnum = QMetaEnum::fromType<Qt::GlobalColor>();
               fetchColorEnum = static_cast<Qt::GlobalColor>(metaEnum.keyToValue(getTextColor.c_str()));
               metaEnum = QMetaEnum::fromType<QFont::Style>();
@@ -1340,9 +1341,15 @@ void inputShape(myVector<Shape*>& shapeVector)
               metaEnum = QMetaEnum::fromType<QFont::Weight>();
               fetchFontWeightEnum = static_cast<QFont::Weight>(metaEnum.keyToValue(getTextFontWeight.c_str()));
 
-
               textPtr = new Text;
+
+              textPtr->setText(QRect(p1, p2), QString(getTextString.c_str()), QColor(fetchColorEnum),
+              Qt::AlignmentFlag::AlignCenter, getTextPointSize, QString(getTextFontFamily.c_str()),
+              fetchFontStyleEnum, fetchFontWeightEnum);
+              textPtr->setShape(Shape::ShapeType::Text);
+              textPtr->setId(getShapeID);
               shapeVector.push_back(textPtr);
+
               break;
 
           }
