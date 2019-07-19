@@ -22,7 +22,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::paintEvent(QPaintEvent *event)
 {
-
+        //workaround untill canvas completed
         myVector<Shape*> shapeVect;
         inputShape(shapeVect);
 
