@@ -1,5 +1,12 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "shape.h"
+#include <QPainter>
+#include <QPen>
+#include <QBrush>
+#include "vector.h"
+#include "shapeParser.h"
+
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -11,4 +18,37 @@ MainWindow::MainWindow(QWidget *parent) :
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+void MainWindow::paintEvent(QPaintEvent *event)
+{
+
+        myVector<Shape*> shapeVect;
+        inputShape(shapeVect);
+
+        for (int i = 0; i < 8; i++)
+        {
+            shapeVect[i]->draw(this);
+        }
+
+        //QPoint p1(20, 90);
+       // QPoint p2(100, 20);
+
+
+/*
+
+        QPainter myLine(this);
+        QBrush brush;
+        QPen pen;
+
+
+
+
+
+
+        Line line;
+        line.setPen(Qt::red,2,Qt::DashDotLine, Qt::FlatCap, Qt::MiterJoin);
+        line.setPoints(p1, p2);
+        line.draw(this);
+*/
 }
