@@ -1256,8 +1256,6 @@ void inputShape(myVector<Shape*>& shapeVector)
 
               p1.setX(dimension1);
               p1.setY(dimension2);
-              p2.setX(dimension3);
-              p2.setY(dimension4);
 
 
               circlePtr = new Ellipse;
@@ -1265,10 +1263,11 @@ void inputShape(myVector<Shape*>& shapeVector)
 
               tempCircle.setTopLeft(p1);
               tempCircle.setWidth(dimension3);
-              tempCircle.setHeight(dimension4);
+              tempCircle.setHeight(dimension3);
               circlePtr->setEllipse(tempCircle);
 
               circlePtr->setShape(Shape::ShapeType::Circle);
+              circlePtr->isCircle();
               circlePtr->setId(getShapeID);
               circlePtr->setPen(fetchColorEnum, getPenWidth, fetchPenStyleEnum, fetchPenCapStyleEnum, fetchPenJoinStyleEnum);
               circlePtr->setBrush(fetchBrushColorEnum, fetchBrushStyleEnum);
