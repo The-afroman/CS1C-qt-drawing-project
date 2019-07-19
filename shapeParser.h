@@ -3,7 +3,7 @@
 #include <string>
 #include "shape.h"
 #include "vector.h"
-#include <QDebug>
+#include <QtCore>
 #include <QFile>
 #include <QString>
 #include <QBrush>
@@ -640,10 +640,6 @@ void inputShape(myVector<Shape*>& shapeVector)
       QRect tempCircle;
 
 
-
-
-
-//*************
       // casting input strings to Qt-enums
       auto&& metaEnum = QMetaEnum::fromType<Qt::GlobalColor>();
       // following line converts string to proper enum type
@@ -679,7 +675,7 @@ void inputShape(myVector<Shape*>& shapeVector)
 
     cout << "inside shape parser" << endl;
 
-    fin.open("/Users/ryota/Desktop/shapes/shapes.txt");
+    fin.open("/home/f/CS1C-qt/qt-shapes-new/CS1C-qt-shapes/shapes.txt");
     if (fin)
     {
         cout << "file opened" << endl;
@@ -1389,13 +1385,3 @@ void inputShape(myVector<Shape*>& shapeVector)
     fin.close();
 
 }
-
-
-// for testing purposes only
-
-/* 
-int main()
-{
-    inputShape("shapes.txt");
-}
-*/

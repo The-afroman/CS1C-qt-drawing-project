@@ -30,10 +30,7 @@ void MainWindow::paintEvent(QPaintEvent *event)
         {
             shapeVect[i]->draw(this);
         }
-
-        //QPoint p1(20, 90);
-       // QPoint p2(100, 20);
-
+}
 
 /*
 
@@ -51,4 +48,3 @@ void MainWindow::paintEvent(QPaintEvent *event)
         line.setPoints(p1, p2);
         line.draw(this);
 */
-}

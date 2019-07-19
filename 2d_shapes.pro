@@ -25,17 +25,20 @@ DEFINES += QT_DEPRECATED_WARNINGS
 CONFIG += c++11
 
 SOURCES += \
+    loginwindow.cpp \
         main.cpp \
         mainwindow.cpp \
     shape.cpp
 
 HEADERS += \
+    loginwindow.h \
         mainwindow.h \
-        readinshapes.h \
         shape.h \
+    shapeParser.h \
     vector.h
 
 FORMS += \
+        loginwindow.ui \
         mainwindow.ui
 
 # Default rules for deployment.

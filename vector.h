@@ -11,26 +11,26 @@ using std::endl;
 
 
 template <class T>
-class vector
+class myVector
 {
     int size_v;   // the size
     T *elem; // pointer to the elements (or 0)
     int space;    // number of elements plus number of free slots
 public:
-    vector() : size_v{0}, elem{nullptr}, space{0} {} // default constructor
+    myVector() : size_v{0}, elem{nullptr}, space{0} {} // default constructor
 
-    explicit vector(int s) : size_v{s}, elem{new T[s]}, space{s} // alternate constructor
+    explicit myVector(int s) : size_v{s}, elem{new T[s]}, space{s} // alternate constructor
     {
         for (int i = 0; i < size_v; ++i)
             elem[i] = 0; // elements are initialized
     }
 
-    vector(const vector &src) : size_v{src.size_v}, elem{new T[src.size_v]}, space{src.space} // copy constructor
+    myVector(const myVector &src) : size_v{src.size_v}, elem{new T[src.size_v]}, space{src.space} // copy constructor
     {
         copy(src.elem, src.elem + size_v, elem); // copy elements - std::copy() algorithm
     }
 
-    vector &operator=(const vector &src) // copy assignment
+    myVector &operator=(const myVector &src) // copy assignment
     {
         T *p = new T[src.size_v];       // allocate new space
         copy(src.elem, src.elem + src.size_v, p); // copy elements - std::copy() algorithm
@@ -40,7 +40,7 @@ public:
         return *this;  // return a self-reference
     }
 
-    ~vector() {
+    ~myVector() {
         delete[] elem; // destructor
     }
 
@@ -66,7 +66,7 @@ public:
     }
 
     void resize(int newsize) // growth
-    // make the vector have newsize elements
+    // make the myVector have newsize elements
     // initialize each new element with the default value 0.0
     {
         reserve(newsize);
@@ -76,7 +76,7 @@ public:
     }
 
     void push_back(T d)
-    // increase vector size by one; initialize the new element with d
+    // increase myVector size by one; initialize the new element with d
     {
         if (space == 0)
             reserve(8);         // start with space for 8 elements
