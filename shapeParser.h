@@ -18,7 +18,6 @@ void inputShape(myVector<Shape*>& shapeVector)
 {
     ifstream fin;
 
-
     Line *linePtr = nullptr;
     Polyline *polylinePtr = nullptr;
     Polygon *polygonPtr = nullptr;
@@ -28,7 +27,6 @@ void inputShape(myVector<Shape*>& shapeVector)
     Ellipse *circlePtr = nullptr;
     Text *textPtr = nullptr;
     int getShapeID = 0;
-    string getShapeType = "NOT SET";
     int dimension1 = 0;
     int dimension2 = 0;
     int dimension3 = 0;
@@ -37,8 +35,11 @@ void inputShape(myVector<Shape*>& shapeVector)
     int dimension6 = 0;
     int dimension7 = 0;
     int dimension8 = 0;
-    string getPenColor = "NOT SET";
+    int getTextPointSize = 0;
     int getPenWidth = 0;
+    int counter = 0;
+    string getShapeType = "NOT SET";
+    string getPenColor = "NOT SET";
     string getPenStyle = "NOT SET";
     string getPenCapStyle = "NOT SET";
     string getPenJoinStyle = "NOT SET";
@@ -47,13 +48,10 @@ void inputShape(myVector<Shape*>& shapeVector)
     string getTextString = "NOT SET";
     string getTextColor = "NOT SET";
     string getTextAlignment = "NOT SET";
-    int getTextPointSize = 0;
     string getTextFontFamily = "NOT SET";
     string getTextFontStyle = "NOT SET";
     string getTextFontWeight = "NOT SET";
-
     string garbage;
-    int counter = 0;
 
     QPoint p1;
     QPoint p2;
@@ -67,39 +65,17 @@ void inputShape(myVector<Shape*>& shapeVector)
     QRect tempEllipse;
     QRect tempCircle;
 
-
     // casting input strings to Qt-enums
     auto&& metaEnum = QMetaEnum::fromType<Qt::GlobalColor>();
-    // following line converts string to proper enum type
-    Qt::GlobalColor fetchColorEnum = static_cast<Qt::GlobalColor>(metaEnum.keyToValue(getPenColor.c_str()));
-
-    metaEnum = QMetaEnum::fromType<Qt::PenStyle>();
-    Qt::PenStyle fetchPenStyleEnum = static_cast<Qt::PenStyle>(metaEnum.keyToValue(getPenStyle.c_str()));
-
-    metaEnum = QMetaEnum::fromType<Qt::PenCapStyle>();
-    Qt::PenCapStyle fetchPenCapStyleEnum = static_cast<Qt::PenCapStyle>(metaEnum.keyToValue(getPenCapStyle.c_str()));
-
-    metaEnum = QMetaEnum::fromType<Qt::PenJoinStyle>();
-    Qt::PenJoinStyle fetchPenJoinStyleEnum = static_cast<Qt::PenJoinStyle>(metaEnum.keyToValue(getPenJoinStyle.c_str()));
-
-    metaEnum = QMetaEnum::fromType<Qt::GlobalColor>();
-    Qt::GlobalColor fetchBrushColorEnum = static_cast<Qt::GlobalColor>(metaEnum.keyToValue(getBrushColor.c_str()));
-
-    metaEnum = QMetaEnum::fromType<Qt::BrushStyle>();
-    Qt::BrushStyle fetchBrushStyleEnum = static_cast<Qt::BrushStyle>(metaEnum.keyToValue(getBrushStyle.c_str()));
-
-    //metaEnum = QMetaEnum::fromType<Qt::AlignmentFlag>();
-    //Qt::AlignmentFlag fetchAlignmentEnum = static_cast<Qt::AlignmentFlag>(metaEnum.keyToValue(getTextAlignment.c_str()));
-
-    metaEnum = QMetaEnum::fromType<Qt::GlobalColor>();
-    fetchColorEnum = static_cast<Qt::GlobalColor>(metaEnum.keyToValue(getTextColor.c_str()));
-
-    metaEnum = QMetaEnum::fromType<QFont::Style>();
-    QFont::Style fetchFontStyleEnum = static_cast<QFont::Style>(metaEnum.keyToValue(getTextFontStyle.c_str()));
-
-    metaEnum = QMetaEnum::fromType<QFont::Weight>();
-    QFont::Weight fetchFontWeightEnum = static_cast<QFont::Weight>(metaEnum.keyToValue(getTextFontWeight.c_str()));
-
+    Qt::GlobalColor fetchColorEnum;
+    Qt::PenStyle fetchPenStyleEnum;
+    Qt::PenCapStyle fetchPenCapStyleEnum;
+    Qt::PenJoinStyle fetchPenJoinStyleEnum;
+    Qt::GlobalColor fetchBrushColorEnum;
+    Qt::BrushStyle fetchBrushStyleEnum;
+  //Qt::AlignmentFlag fetchAlignmentEnum
+    QFont::Style fetchFontStyleEnum;
+    QFont::Weight fetchFontWeightEnum;
 
     cout << "inside shape parser" << endl;
 
@@ -249,6 +225,16 @@ void inputShape(myVector<Shape*>& shapeVector)
               p3.setY(dimension6);
               p4.setX(dimension7);
               p4.setY(dimension8);
+
+              metaEnum = QMetaEnum::fromType<Qt::GlobalColor>();
+              fetchColorEnum = static_cast<Qt::GlobalColor>(metaEnum.keyToValue(getPenColor.c_str()));
+              metaEnum = QMetaEnum::fromType<Qt::PenStyle>();
+              fetchPenStyleEnum = static_cast<Qt::PenStyle>(metaEnum.keyToValue(getPenStyle.c_str()));
+              metaEnum = QMetaEnum::fromType<Qt::PenCapStyle>();
+              fetchPenCapStyleEnum = static_cast<Qt::PenCapStyle>(metaEnum.keyToValue(getPenCapStyle.c_str()));
+              metaEnum = QMetaEnum::fromType<Qt::PenJoinStyle>();
+              fetchPenJoinStyleEnum = static_cast<Qt::PenJoinStyle>(metaEnum.keyToValue(getPenJoinStyle.c_str()));
+              metaEnum = QMetaEnum::fromType<Qt::GlobalColor>();
 
               polylinePtr = new Polyline;
 
