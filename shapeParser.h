@@ -5,8 +5,20 @@
 #include "shape.h"
 #include "vector.h"
 
-
 using namespace std;
+
+Shape::ShapeType convStr(std::string const& inString)
+{
+    if(inString == "Line") return Shape::ShapeType::Line;
+    if(inString == "Polyline") return Shape::ShapeType::Polyline;
+    if(inString == "Polygon") return Shape::ShapeType::Polygon;
+    if(inString == "Rectangle") return Shape::ShapeType::Rectangle;
+    if(inString == "Square") return Shape::ShapeType::Square;
+    if(inString == "Ellipse") return Shape::ShapeType::Ellipse;
+    if(inString == "Circle") return Shape::ShapeType::Circle;
+    if(inString == "Text") return Shape::ShapeType::Text;
+    return Shape::ShapeType::NoShape;
+}
 
 void inputShape(myVector<Shape*>& shapeVector)
 {
@@ -84,7 +96,7 @@ void inputShape(myVector<Shape*>& shapeVector)
         cout << "file was not opened" << endl;
     }
 
-    fin >> garbage;
+      fin >> garbage;
       fin >> getShapeID;
 
       fin >> garbage;
@@ -94,9 +106,9 @@ void inputShape(myVector<Shape*>& shapeVector)
       {
         if (fin)
         {
-          switch (getShapeID)
+          switch (convStr(getShapeType))
           {
-            case 1:
+            case Shape::ShapeType::Line:
               fin >> garbage;
               fin >> dimension1;
               fin.ignore(1);
@@ -160,7 +172,7 @@ void inputShape(myVector<Shape*>& shapeVector)
 
               break;
 
-            case 2:
+            case Shape::ShapeType::Polyline:
               fin >> garbage;
               fin >> dimension1;
               fin.ignore(1);
@@ -243,7 +255,7 @@ void inputShape(myVector<Shape*>& shapeVector)
               shapeVector.push_back(polylinePtr);
               break;
 
-            case 3:
+            case Shape::ShapeType::Polygon:
               fin >> garbage;
               fin >> dimension1;
               fin.ignore(1);
@@ -343,7 +355,7 @@ void inputShape(myVector<Shape*>& shapeVector)
 
               break;
 
-            case 4:
+            case Shape::ShapeType::Rectangle:
               fin >> garbage;
               fin >> dimension1;
               fin.ignore(1);
@@ -424,7 +436,7 @@ void inputShape(myVector<Shape*>& shapeVector)
 
               break;
 
-            case 5:
+            case Shape::ShapeType::Square:
               fin >> garbage;
               fin >> dimension1;
               fin.ignore(1);
@@ -499,7 +511,7 @@ void inputShape(myVector<Shape*>& shapeVector)
               shapeVector.push_back(squarePtr);
               break;
 
-            case 6:
+            case Shape::ShapeType::Ellipse:
               fin >> garbage;
               fin >> dimension1;
               fin.ignore(1);
@@ -581,7 +593,7 @@ void inputShape(myVector<Shape*>& shapeVector)
 
               break;
 
-            case 7:
+            case Shape::ShapeType::Circle:
 
 
               fin >> garbage;
@@ -660,7 +672,7 @@ void inputShape(myVector<Shape*>& shapeVector)
 
               break;
 
-            case 8:
+            case Shape::ShapeType::Text:
               fin >> garbage;
               fin >> dimension1;
               fin.ignore(1);
@@ -736,6 +748,8 @@ void inputShape(myVector<Shape*>& shapeVector)
 
               break;
 
+          case Shape::ShapeType::NoShape:
+              break;
           }
 
           dimension1 = 0;

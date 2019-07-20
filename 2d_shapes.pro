@@ -31,6 +31,7 @@ SOURCES += \
     shape.cpp
 
 HEADERS += \
+    canvas.h \
     loginwindow.h \
         mainwindow.h \
         shape.h \

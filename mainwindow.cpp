@@ -21,14 +21,15 @@ MainWindow::~MainWindow()
 }
 
 //workaround until canvas completed
-void MainWindow::paintEvent(QPaintEvent *event)
+void MainWindow::paintEvent(QPaintEvent * /* event */)
 {
         //workaround until canvas completed
         myVector<Shape*> shapeVect;
+        myVector<Shape*>::iterator p;
         inputShape(shapeVect);
 
-        for (int i = 0; i < 8; i++)
+        for (p = shapeVect.begin(); p < shapeVect.end(); p++)
         {
-            shapeVect[i]->draw(this);
+            (*p)->draw(this);
         }
 }
