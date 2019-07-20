@@ -13,14 +13,14 @@
 class Shape
 {
 public:
-    enum class ShapeType { NoShape, Line, Polyline, Polygon, Rectangle, Square, Ellipse, Circle, Text};
+    enum class ShapeType {NoShape, Line, Polyline, Polygon, Rectangle, Square, Ellipse, Circle, Text};
 
     Shape();
     //Constructor
     Shape(QPaintDevice* device);
     //Constructor
 
-    virtual ~Shape() {}
+    virtual ~Shape();
     //Destructor
 
     /*******GETTERS*********/

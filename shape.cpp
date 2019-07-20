@@ -1,6 +1,8 @@
 #include "shape.h"
 
 /***********SHAPE CLASS************/
+Shape::~Shape(){}
+
 Shape::Shape()
 {
     id = -1;
