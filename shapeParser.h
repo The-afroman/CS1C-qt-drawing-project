@@ -1,16 +1,10 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <QtCore>
 #include "shape.h"
 #include "vector.h"
-#include <QtCore>
-#include <Qt>
-#include <QFile>
-#include <QString>
-#include <QBrush>
-#include <QPainter>
-#include <QApplication>
-#include <QPaintDevice>
+
 
 using namespace std;
 

@@ -105,7 +105,7 @@ public:
 
             for (int index = size_v; index < newalloc; ++index)
             {
-                T temp;
+                T temp{};
                 tempAr[index] = temp;
             }
 

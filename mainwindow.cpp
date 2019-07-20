@@ -20,9 +20,10 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+//workaround until canvas completed
 void MainWindow::paintEvent(QPaintEvent *event)
 {
-        //workaround untill canvas completed
+        //workaround until canvas completed
         myVector<Shape*> shapeVect;
         inputShape(shapeVect);
 
@@ -31,20 +32,3 @@ void MainWindow::paintEvent(QPaintEvent *event)
             shapeVect[i]->draw(this);
         }
 }
-
-/*
-
-        QPainter myLine(this);
-        QBrush brush;
-        QPen pen;
-
-
-
-
-
-
-        Line line;
-        line.setPen(Qt::red,2,Qt::DashDotLine, Qt::FlatCap, Qt::MiterJoin);
-        line.setPoints(p1, p2);
-        line.draw(this);
-*/
