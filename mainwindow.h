@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include "canvas.h"
 
 namespace Ui {
 class MainWindow;
@@ -13,11 +14,11 @@ class MainWindow : public QMainWindow
 
 public:
     explicit MainWindow(QWidget *parent = nullptr);
-    void paintEvent(QPaintEvent *event);
     ~MainWindow();
 
 private:
     Ui::MainWindow *ui;
+    RenderArea *renderArea;
 };
 
 #endif // MAINWINDOW_H
