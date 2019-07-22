@@ -70,6 +70,7 @@ void inputShape(myVector<Shape*>& shapeVector)
     QRect tempSquare;
     QRect tempEllipse;
     QRect tempCircle;
+    QRect tempText;
 
     // casting input strings to Qt-enums
     auto&& metaEnum = QMetaEnum::fromType<Qt::GlobalColor>();
@@ -85,7 +86,7 @@ void inputShape(myVector<Shape*>& shapeVector)
 
     cout << "inside shape parser" << endl;
 
-    fin.open("/home/f/CS1C-qt/qt-shapes-new/CS1C-qt-shapes/shapes.txt");
+    fin.open("/Users/ryota/Desktop/2dShapes/shapes.txt");
 
     if (fin)
     {
@@ -501,6 +502,7 @@ void inputShape(myVector<Shape*>& shapeVector)
 
               tempSquare.setTopLeft(p1);
               tempSquare.setHeight(dimension3);
+              tempSquare.setWidth(dimension3);
               squarePtr->setRect(tempSquare);
 
               squarePtr->setShape(Shape::ShapeType::Rectangle);
@@ -717,7 +719,7 @@ void inputShape(myVector<Shape*>& shapeVector)
               cout << "TEXT STRING: " << getTextString << endl;
               cout << "TEXT COLOR: " << getTextColor << endl;
               cout << "TEXT ALIGNMENT: " << getTextAlignment << endl;
-              cout << "TEXT POINT SIZE: " << getTextAlignment << endl;
+              cout << "TEXT POINT SIZE: " << getTextPointSize << endl;
               cout << "TEXT FONT FAMILY: " << getTextFontFamily << endl;
               cout << "TEXT FONT STYLE: " << getTextFontStyle << endl;
               cout << "TEXT FONT WEIGHT: " << getTextFontWeight << endl;
@@ -738,10 +740,13 @@ void inputShape(myVector<Shape*>& shapeVector)
               fetchFontWeightEnum = static_cast<QFont::Weight>(metaEnum.keyToValue(getTextFontWeight.c_str()));
 
               textPtr = new Text;
+              tempText.setTopLeft(p1);
+              tempText.setHeight(dimension3);
+              tempText.setWidth(dimension4);
 
-              textPtr->setText(QRect(p1, p2), QString(getTextString.c_str()), QColor(fetchColorEnum),
-              Qt::AlignmentFlag::AlignCenter, getTextPointSize, QString(getTextFontFamily.c_str()),
-              fetchFontStyleEnum, fetchFontWeightEnum);
+              //textPtr->setText(tempText, QString(getTextString.c_str()), QColor(fetchColorEnum), Qt::AlignCenter, 10, QFont::"Comic Sans MS", QFont::FlatCap. QFont::Normal );
+
+              textPtr->setText(tempText, QString(getTextString.c_str()), QColor(fetchColorEnum), Qt::AlignmentFlag::AlignCenter, getTextPointSize, QString(getTextFontFamily.c_str()), fetchFontStyleEnum, fetchFontWeightEnum);
               textPtr->setShape(Shape::ShapeType::Text);
               textPtr->setId(getShapeID);
               shapeVector.push_back(textPtr);

@@ -5,8 +5,12 @@
 RenderArea::RenderArea(QWidget *parent)
     : QWidget(parent)
 {
+    QWidget widget;
+
+
     setBackgroundRole(QPalette::Base);
     setAutoFillBackground(true);
+
 }
 
 void RenderArea::paintEvent(QPaintEvent * /* event */)
