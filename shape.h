@@ -219,11 +219,8 @@ class Text : public Shape
 {
 public:
     Text() : Shape() {}
-
+    //Constructor
     Text(QPaintDevice* device) :Shape(device) {}
-
-
-//    Text(QPaintDevice* device = nullptr, int id = -1) : Shape(device,id, ShapeType::Text){}
     //Constructor
 
     ~Text() override {}
