@@ -741,8 +741,8 @@ void inputShape(myVector<Shape*>& shapeVector)
 
               textPtr = new Text;
               tempText.setTopLeft(p1);
-              tempText.setHeight(dimension3);
-              tempText.setWidth(dimension4);
+              tempText.setHeight(dimension4);
+              tempText.setWidth(dimension3);
 
               //textPtr->setText(tempText, QString(getTextString.c_str()), QColor(fetchColorEnum), Qt::AlignCenter, 10, QFont::"Comic Sans MS", QFont::FlatCap. QFont::Normal );
 

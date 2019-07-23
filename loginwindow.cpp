@@ -1,5 +1,7 @@
 #include "loginwindow.h"
 #include "ui_loginwindow.h"
+#include "mainwindow.h"
+#include <QApplication>
 
 loginWindow::loginWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -26,13 +28,23 @@ loginWindow::~loginWindow()
 // will automatically close after clicking "Enter".
 void loginWindow::on_loginButton_clicked()
 {
+
+
+
     if (ui->usernameInput->toPlainText() == "temp" &&
         ui->passwordInput->toPlainText() == "pw")
     {
+
+
         this->close();
+
+
+
+
     }
     else
     {
         ui->errorMessage->setText("Use 'temp' and 'pw' for a guest account");
     }
+
 }
