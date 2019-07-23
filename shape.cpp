@@ -107,9 +107,9 @@ void Line::draw(QPaintDevice* device, const int translate_x, const int translate
 
     getQpainter().setPen(getPen());
 
-    pointBegin = QPoint(pointBegin.x()+translate_x, pointBegin.y()+translate_y);
-    pointEnd = QPoint(pointEnd.x()+translate_x, pointEnd.y()+translate_y);
-    //getQpainter().translate(translate_x, translate_y);
+    //pointBegin = QPoint(pointBegin.x()+translate_x, pointBegin.y()+translate_y);
+    //pointEnd = QPoint(pointEnd.x()+translate_x, pointEnd.y()+translate_y);
+    getQpainter().translate(translate_x, translate_y);
 
     //ID of shape displayed next to shape
     //getQpainter().drawText(pointBegin.x(), pointBegin.y() - 60, idStr);
