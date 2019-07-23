@@ -35,6 +35,7 @@ HEADERS += \
     canvas.h \
     loginwindow.h \
         mainwindow.h \
+    savefile.h \
         shape.h \
     shapeParser.h \
     vector.h

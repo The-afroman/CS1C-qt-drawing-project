@@ -107,14 +107,18 @@ void Line::draw(QPaintDevice* device, const int translate_x, const int translate
 
     getQpainter().setPen(getPen());
 
-    getQpainter().save();
-    getQpainter().translate(translate_x, translate_y);
+    pointBegin = QPoint(pointBegin.x()+translate_x, pointBegin.y()+translate_y);
+    pointEnd = QPoint(pointEnd.x()+translate_x, pointEnd.y()+translate_y);
+    //getQpainter().translate(translate_x, translate_y);
 
     //ID of shape displayed next to shape
     getQpainter().drawText(pointBegin.x(), pointBegin.y() - 60, idStr);
 
     getQpainter().drawLine(pointBegin, pointEnd);
 
+    getQpainter().setPen(QColor(Qt::GlobalColor::black));
+    getQpainter().drawText(QPoint(pointBegin.x()-20, pointBegin.y()-20), "#1");
+    getQpainter().save();
     getQpainter().restore();
 
     getQpainter().end();
@@ -142,6 +146,9 @@ void Polyline::draw(QPaintDevice* device, const int translate_x, const int trans
     getQpainter().drawText(points.begin()->x() - 40, points.begin()->y() - 50, idStr);
 
     getQpainter().drawPolyline(points.begin(), points.size());
+
+    getQpainter().setPen(QColor(Qt::GlobalColor::black));
+    getQpainter().drawText(QPoint(points.begin()[0].x()-20, points.begin()[0].y()-20), "#2");
 
     getQpainter().restore();
 
@@ -172,6 +179,9 @@ void Polygon::draw(QPaintDevice* device, const int translate_x, const int transl
 
     getQpainter().drawPolygon(points.begin(), points.size());
 
+    getQpainter().setPen(QColor(Qt::GlobalColor::black));
+    getQpainter().drawText(QPoint(points.begin()[0].x()-20, points.begin()[0].y()-20), "#3");
+
     getQpainter().restore();
 
     getQpainter().end();
@@ -200,11 +210,18 @@ void Rectangle::draw(QPaintDevice* device, const int translate_x, const int tran
 
     getQpainter().save();
     getQpainter().translate(translate_x, translate_y);
+<<<<<<< Updated upstream
 
     //ID of shape displayed next to shape
     getQpainter().drawText(rect.topLeft().x(), rect.topLeft().y() - 20, idStr);
 
+=======
+>>>>>>> Stashed changes
     getQpainter().drawRect(rect);
+
+    getQpainter().setPen(QColor(Qt::GlobalColor::black));
+    if(this->isSquare()) getQpainter().drawText(QPoint(rect.x()-20, rect.y()-20), "#5");
+    else getQpainter().drawText(QPoint(rect.x()-20, rect.y()-20), "#4");
 
     getQpainter().restore();
 
@@ -239,6 +256,9 @@ void Ellipse::draw(QPaintDevice* device, const int translate_x, const int transl
 
     getQpainter().drawEllipse(ellipse);
 
+    getQpainter().setPen(QColor(Qt::GlobalColor::black));
+    if(this->isCircle()) getQpainter().drawText(QPoint(ellipse.x()-20, ellipse.y()-20), "#7");
+    else getQpainter().drawText(QPoint(ellipse.x()-20, ellipse.y()-20), "#6");
     getQpainter().restore();
 
     getQpainter().end();
@@ -282,6 +302,10 @@ void Text::draw(QPaintDevice* device, const int translate_x, const int translate
     getQpainter().drawText(textObj.topLeft().x() + 100, textObj.topLeft().y() - 10, idStr);
     //Actual text being drawn
     getQpainter().drawText(textObj, align, text);
+
+    getQpainter().setPen(QColor(Qt::GlobalColor::black));
+
+    getQpainter().drawText(QPoint(textObj.x()+80, textObj.y()+10), "#8");
 
     getQpainter().restore();
 

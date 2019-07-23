@@ -1,6 +1,5 @@
 #include "loginwindow.h"
 #include "mainwindow.h"
-#include "canvas.h"
 #include <QApplication>
 
 int main(int argc, char *argv[])

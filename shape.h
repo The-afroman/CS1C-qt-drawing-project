@@ -10,10 +10,13 @@
 #include <Qt>
 #include "vector.h"
 
+const char FILE_PATH[60] = "/home/f/CS1C-qt/qt-shapes-new/CS1C-qt-shapes/shapes.txt";
+
 class Shape
 {
+
 public:
-    enum class ShapeType {NoShape, Line, Polyline, Polygon, Rectangle, Square, Ellipse, Circle, Text};
+    enum ShapeType {NoShape, Line, Polyline, Polygon, Rectangle, Square, Ellipse, Circle, Text};
 
     Shape();
     //Constructor
@@ -31,6 +34,8 @@ public:
     ShapeType getShape() const;
     //Function to return the shapeType of the object
     //Postcondition: returns a shapeType
+
+    QRect idBox;
 
     const QPen& getPen() const;
     //Function to return and use the QPen pen
@@ -69,6 +74,12 @@ public:
     virtual void draw(QPaintDevice* device, const int translate_x = 0, const int translate_y = 0) = 0;
     //Pure Virtual function that will draw the shape
 
+    virtual QPoint getPointBegin(){return QPoint(0,0);}
+    virtual QPoint getPointEnd(){return QPoint(0,0);}
+    virtual myVector<QPoint>& getPoints(){myVector<QPoint> vect;
+                                          return vect;}
+    virtual QRect getRect(){return QRect();}
+
 protected:
     QPainter& getQpainter();
 
@@ -100,6 +111,14 @@ public:
 
     void draw(QPaintDevice* device, const int translate_x = 0, const int translate_y = 0) override;
     //Function to draw the line shape
+    QPoint getPointBegin() override
+    {
+        return pointBegin;
+    }
+    QPoint getPointEnd() override
+    {
+        return pointEnd;
+    }
 
 private:
     QPoint pointBegin;
@@ -126,6 +145,9 @@ public:
     void draw(QPaintDevice* device, const int translate_x = 0, const int translate_y = 0) override;
     //Function to draw the polyline shape
 
+    myVector<QPoint>& getPoints() override
+    {return points;}
+
 private:
     myVector<QPoint> points;
 };
@@ -149,6 +171,9 @@ public:
 
     void draw(QPaintDevice* device, const int translate_x = 0, const int translate_y = 0) override;
     //Function to draw the polygon
+
+    myVector<QPoint>& getPoints() override
+    {return points;}
 
 private:
     myVector<QPoint> points;
@@ -180,6 +205,11 @@ public:
     void draw(QPaintDevice* device, const int translate_x = 0, const int translate_y = 0) override;
     //Function to draw the rectangle or square shape
 
+    QRect getRect() override
+    {
+        return rect;
+    }
+
 private:
     QRect rect;
 };
@@ -210,6 +240,9 @@ public:
     void draw(QPaintDevice* device, const int translate_x = 0, const int translate_y = 0) override;
     //Function to draw an ellipse or circle shape
 
+    QRect getRect() override
+    {return ellipse;}
+
 private:
     QRect ellipse;
 };
@@ -235,6 +268,9 @@ public:
 
     void draw(QPaintDevice* device, const int translate_x = 0, const int translate_y = 0) override;
     //Function to draw the text
+
+    QRect getRect() override
+    {return textObj;}
 
 private:
     QRect textObj;

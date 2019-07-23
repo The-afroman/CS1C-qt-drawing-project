@@ -86,7 +86,7 @@ void inputShape(myVector<Shape*>& shapeVector)
 
     cout << "inside shape parser" << endl;
 
-    fin.open("/Users/ryota/Desktop/2dShapes/shapes.txt");
+    fin.open(FILE_PATH);
 
     if (fin)
     {
