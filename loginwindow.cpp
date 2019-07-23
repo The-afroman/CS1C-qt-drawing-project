@@ -1,13 +1,12 @@
 #include "loginwindow.h"
 #include "ui_loginwindow.h"
-#include "mainwindow.h"
-#include <QApplication>
 
 loginWindow::loginWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::loginWindow)
 {
     ui->setupUi(this);
+    ui->errorMessage->setText("Guest account granted (default)...");
 }
 
 loginWindow::~loginWindow()
@@ -16,35 +15,35 @@ loginWindow::~loginWindow()
 }
 
 // Albert Le
-// 7/16/19 11:18 pm lastest edit
+// 7/22/19 5:38 pm lastest edit
 
 // Opens a login window, allowing the user to enter
 // a username and password and to click on an "Enter"
-// button. If username and password are not "temp" and
-// "pw" respectively, then the window will display an
-// error message after clicking the "Enter" button.
+// button. If username and password are not the correct
+// login information, it will output an error message.
+// It defaults the user to a guest account. If they enter
+// the correct username and pw, then it will output an
+// "Admin access granted" message, and then the user can
+// exit the login window. It should pass an argument (a bool)
+// to MainWindow.
 
-// If username and password are correct, then the window
-// will automatically close after clicking "Enter".
 void loginWindow::on_loginButton_clicked()
 {
-
-
-
-    if (ui->usernameInput->toPlainText() == "temp" &&
-        ui->passwordInput->toPlainText() == "pw")
+    if (ui->usernameInput->toPlainText() == "qtAdmin" &&
+        ui->passwordInput->toPlainText() == "qtPW")
     {
+        ui->errorMessage->setText("Admin access granted...");
 
-
-        this->close();
-
-
-
-
+        // put in flag to pass to MainWindow. Perhaps a bool.
     }
     else
     {
-        ui->errorMessage->setText("Use 'temp' and 'pw' for a guest account");
+        ui->errorMessage->setText("Incorrect login for admin access.");
     }
 
+}
+
+void loginWindow::on_closeWindow_clicked()
+{
+    this->close();
 }
