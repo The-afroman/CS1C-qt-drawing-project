@@ -17,10 +17,10 @@ void outFile(myVector<Shape*> shapeVect)
     oFile.open("/home/f/CS1C-qt/qt-shapes-new/CS1C-qt-shapes/test.txt", std::ofstream::out | std::ofstream::trunc);
     for(p = shapeVect.begin(); p < shapeVect.end(); p++)
     {
+        oFile << endl;
         switch((*p)->getShape())
         {
             case Shape::ShapeType::Line:
-                oFile << endl;
                 oFile << "ShapeId: " << (*p)->getId() << endl;
                 oFile << "ShapeType: Line\n";
                 oFile << "ShapeDimensions: " << (*p)->getPointBegin().x() << ", "
@@ -33,10 +33,8 @@ void outFile(myVector<Shape*> shapeVect)
                 oFile << "PenStyle: DashDotLine\n";
                 oFile << "PenCapStyle: FlatCap\n";
                 oFile << "PenJoinStyle: MiterJoin\n";
-                oFile << endl;
                 break;
             case Shape::ShapeType::Polyline:
-                oFile << endl;
                 oFile << "ShapeId: " << (*p)->getId() << endl;
                 oFile << "ShapeType: Polyline\n";
                 oFile << "ShapeDimensions: " << (*p)->getPoints()[0].x() << ", "
@@ -53,7 +51,6 @@ void outFile(myVector<Shape*> shapeVect)
                 oFile << "PenStyle: SolidLine\n";
                 oFile << "PenCapStyle: FlatCap\n";
                 oFile << "PenJoinStyle: MiterJoin\n";
-                oFile << endl;
                 break;
             case Shape::ShapeType::Polygon: break;
             case Shape::ShapeType::Rectangle: break;

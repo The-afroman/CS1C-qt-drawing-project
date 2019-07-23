@@ -101,7 +101,7 @@ void Line::setPoints(const QPoint& pB, const QPoint& pE)
 
 void Line::draw(QPaintDevice* device, const int translate_x, const int translate_y)
 {
-    QString idStr = "ID: " + QString::number(getId());
+    //QString idStr = "ID: " + QString::number(getId());
 
     getQpainter().begin(device);
 
@@ -112,7 +112,7 @@ void Line::draw(QPaintDevice* device, const int translate_x, const int translate
     //getQpainter().translate(translate_x, translate_y);
 
     //ID of shape displayed next to shape
-    getQpainter().drawText(pointBegin.x(), pointBegin.y() - 60, idStr);
+    //getQpainter().drawText(pointBegin.x(), pointBegin.y() - 60, idStr);
 
     getQpainter().drawLine(pointBegin, pointEnd);
 
@@ -133,7 +133,7 @@ void Polyline::setPoints(const QPoint& p)
 
 void Polyline::draw(QPaintDevice* device, const int translate_x, const int translate_y)
 {
-    QString idStr = "ID: " + QString::number(getId());
+    //QString idStr = "ID: " + QString::number(getId());
 
     getQpainter().begin(device);
 
@@ -143,7 +143,7 @@ void Polyline::draw(QPaintDevice* device, const int translate_x, const int trans
     getQpainter().translate(translate_x, translate_y);
 
     //ID of shape displayed next to shape
-    getQpainter().drawText(points.begin()->x() - 40, points.begin()->y() - 50, idStr);
+    //getQpainter().drawText(points.begin()->x() - 40, points.begin()->y() - 50, idStr);
 
     getQpainter().drawPolyline(points.begin(), points.size());
 
@@ -164,7 +164,7 @@ void Polygon::setPoints(const QPoint &p)
 
 void Polygon::draw(QPaintDevice* device, const int translate_x, const int translate_y)
 {
-    QString idStr = "ID: " + QString::number(getId());
+    //QString idStr = "ID: " + QString::number(getId());
 
     getQpainter().begin(device);
 
@@ -175,7 +175,7 @@ void Polygon::draw(QPaintDevice* device, const int translate_x, const int transl
     getQpainter().translate(translate_x, translate_y);
 
     //ID of shape displayed next to shape
-    getQpainter().drawText(points.begin()->x() - 40, points.begin()->y() - 50, idStr);
+    //getQpainter().drawText(points.begin()->x() - 40, points.begin()->y() - 50, idStr);
 
     getQpainter().drawPolygon(points.begin(), points.size());
 
@@ -201,7 +201,7 @@ bool Rectangle::isSquare() const
 
 void Rectangle::draw(QPaintDevice* device, const int translate_x, const int translate_y)
 {
-    QString idStr = "ID: " + QString::number(getId());
+    //QString idStr = "ID: " + QString::number(getId());
 
     getQpainter().begin(device);
 
@@ -210,13 +210,6 @@ void Rectangle::draw(QPaintDevice* device, const int translate_x, const int tran
 
     getQpainter().save();
     getQpainter().translate(translate_x, translate_y);
-<<<<<<< Updated upstream
-
-    //ID of shape displayed next to shape
-    getQpainter().drawText(rect.topLeft().x(), rect.topLeft().y() - 20, idStr);
-
-=======
->>>>>>> Stashed changes
     getQpainter().drawRect(rect);
 
     getQpainter().setPen(QColor(Qt::GlobalColor::black));
@@ -241,7 +234,7 @@ void Ellipse::setEllipse(const QRect &e)
 
 void Ellipse::draw(QPaintDevice* device, const int translate_x, const int translate_y)
 {
-    QString idStr = "ID: " + QString::number(getId());
+    //QString idStr = "ID: " + QString::number(getId());
 
     getQpainter().begin(device);
 
@@ -252,7 +245,7 @@ void Ellipse::draw(QPaintDevice* device, const int translate_x, const int transl
     getQpainter().translate(translate_x, translate_y);
 
     //ID of shape displayed next to shape
-    getQpainter().drawText(ellipse.topLeft().x(), ellipse.topLeft().y() - 10, idStr);
+    //getQpainter().drawText(ellipse.topLeft().x(), ellipse.topLeft().y() - 10, idStr);
 
     getQpainter().drawEllipse(ellipse);
 
@@ -288,7 +281,7 @@ void Text::setText(const QRect& tO, const QString t, const QColor c, const Qt::A
 
 void Text::draw(QPaintDevice* device, const int translate_x, const int translate_y)
 {
-    QString idStr = "ID: " + QString::number(getId());
+    //QString idStr = "ID: " + QString::number(getId());
 
     getQpainter().begin(device);
 
@@ -299,7 +292,7 @@ void Text::draw(QPaintDevice* device, const int translate_x, const int translate
     getQpainter().translate(translate_x, translate_y);
 
     //ID of shape displayed next to shape
-    getQpainter().drawText(textObj.topLeft().x() + 100, textObj.topLeft().y() - 10, idStr);
+    //getQpainter().drawText(textObj.topLeft().x() + 100, textObj.topLeft().y() - 10, idStr);
     //Actual text being drawn
     getQpainter().drawText(textObj, align, text);
 
