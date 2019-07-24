@@ -10,7 +10,7 @@
 #include <Qt>
 #include "vector.h"
 
-const char FILE_PATH[60] = "/home/f/CS1C-project-new/CS1C-qt-shapes/shapes.txt";
+const char FILE_PATH[60] = "/Users/ryota/Desktop/2dShapes/shapes.txt";
 
 class Shape
 {

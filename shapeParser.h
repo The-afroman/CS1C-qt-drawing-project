@@ -95,6 +95,8 @@ void inputShape(myVector<Shape*>& shapeVector)
     else
     {
         cout << "file was not opened" << endl;
+        cin.ignore(1000, '\n');
+        cin.get();
     }
 
       fin >> garbage;

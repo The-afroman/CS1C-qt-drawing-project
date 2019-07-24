@@ -14,7 +14,7 @@ void outFile(myVector<Shape*> shapeVect)
 {
     std::ofstream oFile;
     myVector<Shape*>::iterator p;
-    oFile.open("/home/f/CS1C-project-new/CS1C-qt-shapes/test.txt", std::ofstream::out | std::ofstream::trunc);
+    oFile.open("/Users/ryota/Desktop/2dShapes/test.txt", std::ofstream::out | std::ofstream::trunc);
     for(p = shapeVect.begin(); p < shapeVect.end(); p++)
     {
         oFile << endl;
