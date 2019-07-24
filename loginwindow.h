@@ -3,6 +3,8 @@
 
 #include <QMainWindow>
 
+extern bool adminAccessGranted;
+
 namespace Ui {
 class loginWindow;
 }

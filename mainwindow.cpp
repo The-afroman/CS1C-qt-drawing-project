@@ -5,6 +5,7 @@
 #include <QBrush>
 #include <QWidget>
 #include <QtWidgets>
+#include "loginwindow.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -67,15 +68,20 @@ void MainWindow::paintEvent(QPaintEvent * /* event */)
    // ui->spinBox_2->value();
    // ui->spinBox_3->value();
 
-    renderArea->updatePoints(ui->spinBox_2->value(),ui->spinBox_3->value(),
-                             ui->spinBox_4->value(), ui->spinBox_5->value(),
-                             ui->spinBox_6->value(), ui->spinBox_7->value(),
-                             ui->spinBox_8->value(), ui->spinBox_9->value(),
-                             ui->spinBox_10->value(), ui->spinBox_11->value(),
-                             ui->spinBox_12->value(), ui->spinBox_13->value(),
-                             ui->spinBox_14->value(), ui->spinBox_15->value(),
-                             ui->spinBox_16->value(), ui->spinBox_17->value());
-
+   // if admin access is granted, then any changes made to the spinBoxes will
+   // move the shapes. However, if logged in as a guest (a.k.a. no admin access),
+   // then updating the values in the spinBoxes will have no effect whatsoever
+    if (adminAccessGranted)
+    {
+        renderArea->updatePoints(ui->spinBox_2->value(),ui->spinBox_3->value(),
+                                 ui->spinBox_4->value(), ui->spinBox_5->value(),
+                                 ui->spinBox_6->value(), ui->spinBox_7->value(),
+                                 ui->spinBox_8->value(), ui->spinBox_9->value(),
+                                 ui->spinBox_10->value(), ui->spinBox_11->value(),
+                                 ui->spinBox_12->value(), ui->spinBox_13->value(),
+                                 ui->spinBox_14->value(), ui->spinBox_15->value(),
+                                 ui->spinBox_16->value(), ui->spinBox_17->value());
+    }
 }
 
 MainWindow::~MainWindow()
