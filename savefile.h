@@ -14,7 +14,7 @@ void outFile(myVector<Shape*> shapeVect, int ofsetAr[][2])
 {
     std::ofstream oFile;
     myVector<Shape*>::iterator p;
-    oFile.open("/home/f/CS1C-qt/qt-shapes-new/CS1C-qt-shapes/test.txt", std::ofstream::out | std::ofstream::trunc);
+    oFile.open("/home/f/CS1C-project-new/CS1C-qt-shapes/test.txt", std::ofstream::out | std::ofstream::trunc);
     for(p = shapeVect.begin(); p < shapeVect.end(); p++)
     {
         oFile << endl;
@@ -93,7 +93,7 @@ void outFile(myVector<Shape*> shapeVect, int ofsetAr[][2])
                 oFile << "ShapeType: Square\n";
                 oFile << "ShapeDimensions: " << (*p)->getRect().topLeft().x()+ofsetAr[4][0] << ", "
                                              << (*p)->getRect().topLeft().y()+ofsetAr[4][1] << ", "
-                                             << (*p)->getRect().width() << ", "
+                                             << (*p)->getRect().width()
                                              << endl;
                 oFile << "PenColor: red\n";
                 oFile << "PenWidth: 0\n";
