@@ -30,7 +30,7 @@ class RenderArea : public QWidget
     int changeY8=0;
     int shapeId;
 public:
-    void saveShapes();
+    void saveShapes(int ofsetAr[][2], const int AR_SIZE);
 
     RenderArea(QWidget *parent = nullptr);
     void paintEvent(QPaintEvent *event) override;

@@ -41,9 +41,27 @@ void RenderArea::updatePoints(int x, int y,
     update();
 }
 
-void RenderArea::saveShapes()
+void RenderArea::saveShapes(int ofsetAr[][2] , const int AR_SIZE = 8)
 {
-    outFile(shapeVect);
+    int i = 0;
+    ofsetAr[i][0] = changeX;
+    ofsetAr[i][1] = changeY;
+    ofsetAr[++i][0] = changeX2;
+    ofsetAr[i][1] = changeY2;
+    ofsetAr[++i][0] = changeX3;
+    ofsetAr[i][1] = changeY3;
+    ofsetAr[++i][0] = changeX4;
+    ofsetAr[i][1] = changeY4;
+    ofsetAr[++i][0] = changeX5;
+    ofsetAr[i][1] = changeY5;
+    ofsetAr[++i][0] = changeX6;
+    ofsetAr[i][1] = changeY6;
+    ofsetAr[++i][0] = changeX7;
+    ofsetAr[i][1] = changeY7;
+    ofsetAr[++i][0] = changeX8;
+    ofsetAr[i][1] = changeY8;
+
+    outFile(shapeVect, ofsetAr);
 }
 
 void RenderArea::paintEvent(QPaintEvent * /* event */)

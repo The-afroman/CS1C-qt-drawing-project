@@ -6,6 +6,7 @@
 #include <QWidget>
 #include <QtWidgets>
 #include "loginwindow.h"
+#include "contactwindow.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -60,7 +61,8 @@ MainWindow::MainWindow(QWidget *parent) :
 void MainWindow::on_pushButton_clicked()
 {
     cout << "button!!!!\n\n";
-    renderArea->saveShapes();
+    int ofsetAr[8][2];
+    renderArea->saveShapes(ofsetAr, 8);
 }
 
 void MainWindow::paintEvent(QPaintEvent * /* event */)

@@ -507,7 +507,7 @@ void inputShape(myVector<Shape*>& shapeVector)
               tempSquare.setWidth(dimension3);
               squarePtr->setRect(tempSquare);
 
-              squarePtr->setShape(Shape::ShapeType::Rectangle);
+              squarePtr->setShape(Shape::ShapeType::Square);
               squarePtr->setId(getShapeID);
               squarePtr->setPen(fetchColorEnum, getPenWidth, fetchPenStyleEnum, fetchPenCapStyleEnum, fetchPenJoinStyleEnum);
               squarePtr->setBrush(fetchBrushColorEnum, fetchBrushStyleEnum);

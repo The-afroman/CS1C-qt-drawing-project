@@ -26,6 +26,7 @@ CONFIG += c++11
 
 SOURCES += \
     canvas.cpp \
+    contactwindow.cpp \
     loginwindow.cpp \
         main.cpp \
         mainwindow.cpp \
@@ -33,6 +34,7 @@ SOURCES += \
 
 HEADERS += \
     canvas.h \
+    contactwindow.h \
     loginwindow.h \
         mainwindow.h \
     savefile.h \
@@ -41,6 +43,7 @@ HEADERS += \
     vector.h
 
 FORMS += \
+        contactwindow.ui \
         loginwindow.ui \
         mainwindow.ui
 
