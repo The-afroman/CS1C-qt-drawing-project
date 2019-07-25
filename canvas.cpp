@@ -59,27 +59,28 @@ void RenderArea::saveShapes(int ofsetAr[][2] , const int AR_SIZE = 8)
     ofsetAr[++i][0] = changeX7;
     ofsetAr[i][1] = changeY7;
     ofsetAr[++i][0] = changeX8;
-    ofsetAr[i][1] = changeY8;
+    ofsetAr[AR_SIZE-1][1] = changeY8;
 
     outFile(shapeVect, ofsetAr);
 }
 
 void RenderArea::paintEvent(QPaintEvent * /* event */)
 {
+    /* use of overloaded [] operator */
+    myVector<Shape*> newVect(shapeVect);
+    newVect[0]->draw(this, changeX, changeY);
 
-    shapeVect[0]->draw(this, changeX, changeY);
+    newVect[1]->draw(this, changeX2, changeY2);
 
-    shapeVect[1]->draw(this, changeX2, changeY2);
+    newVect[2]->draw(this, changeX3, changeY3);
 
-    shapeVect[2]->draw(this, changeX3, changeY3);
+    newVect[3]->draw(this, changeX4, changeY4);
 
-    shapeVect[3]->draw(this, changeX4, changeY4);
+    newVect[4]->draw(this, changeX5, changeY5);
 
-    shapeVect[4]->draw(this, changeX5, changeY5);
+    newVect[5]->draw(this, changeX6, changeY6);
 
-    shapeVect[5]->draw(this, changeX6, changeY6);
+    newVect[6]->draw(this, changeX7, changeY7);
 
-    shapeVect[6]->draw(this, changeX7, changeY7);
-
-    shapeVect[7]->draw(this, changeX8, changeY8);
+    newVect[7]->draw(this, changeX8, changeY8);
 }

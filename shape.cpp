@@ -101,7 +101,7 @@ void Line::setPoints(const QPoint& pB, const QPoint& pE)
 
 void Line::draw(QPaintDevice* device, const int translate_x, const int translate_y)
 {
-    //QString idStr = "ID: " + QString::number(getId());
+    QString idStr = "ID: " + QString::number(getId());
 
     getQpainter().begin(device);
 
@@ -117,7 +117,7 @@ void Line::draw(QPaintDevice* device, const int translate_x, const int translate
     getQpainter().drawLine(pointBegin, pointEnd);
 
     getQpainter().setPen(QColor(Qt::GlobalColor::black));
-    getQpainter().drawText(QPoint(pointBegin.x()-20, pointBegin.y()-20), "#1");
+    getQpainter().drawText(QPoint(pointBegin.x()-20, pointBegin.y()-20), idStr);
     getQpainter().save();
     getQpainter().restore();
 
@@ -133,7 +133,7 @@ void Polyline::setPoints(const QPoint& p)
 
 void Polyline::draw(QPaintDevice* device, const int translate_x, const int translate_y)
 {
-    //QString idStr = "ID: " + QString::number(getId());
+    QString idStr = "ID: " + QString::number(getId());
 
     getQpainter().begin(device);
 
@@ -148,7 +148,7 @@ void Polyline::draw(QPaintDevice* device, const int translate_x, const int trans
     getQpainter().drawPolyline(points.begin(), points.size());
 
     getQpainter().setPen(QColor(Qt::GlobalColor::black));
-    getQpainter().drawText(QPoint(points.begin()[0].x()-20, points.begin()[0].y()-20), "#2");
+    getQpainter().drawText(QPoint(points.begin()[0].x()-40, points.begin()[0].y()-40), idStr);
 
     getQpainter().restore();
 
@@ -164,7 +164,7 @@ void Polygon::setPoints(const QPoint &p)
 
 void Polygon::draw(QPaintDevice* device, const int translate_x, const int translate_y)
 {
-    //QString idStr = "ID: " + QString::number(getId());
+    QString idStr = "ID: " + QString::number(getId());
 
     getQpainter().begin(device);
 
@@ -180,7 +180,7 @@ void Polygon::draw(QPaintDevice* device, const int translate_x, const int transl
     getQpainter().drawPolygon(points.begin(), points.size());
 
     getQpainter().setPen(QColor(Qt::GlobalColor::black));
-    getQpainter().drawText(QPoint(points.begin()[0].x()-20, points.begin()[0].y()-20), "#3");
+    getQpainter().drawText(QPoint(points.begin()[0].x()-40, points.begin()[0].y()-40), idStr);
 
     getQpainter().restore();
 
@@ -201,7 +201,7 @@ bool Rectangle::isSquare() const
 
 void Rectangle::draw(QPaintDevice* device, const int translate_x, const int translate_y)
 {
-    //QString idStr = "ID: " + QString::number(getId());
+    QString idStr = "ID: " + QString::number(getId());
 
     getQpainter().begin(device);
 
@@ -213,8 +213,8 @@ void Rectangle::draw(QPaintDevice* device, const int translate_x, const int tran
     getQpainter().drawRect(rect);
 
     getQpainter().setPen(QColor(Qt::GlobalColor::black));
-    if(this->isSquare()) getQpainter().drawText(QPoint(rect.x()-20, rect.y()-20), "#5");
-    else getQpainter().drawText(QPoint(rect.x()-20, rect.y()-20), "#4");
+    //if(this->isSquare()) getQpainter().drawText(QPoint(rect.x()-20, rect.y()-20), idStr);
+    getQpainter().drawText(QPoint(rect.x()-20, rect.y()-20), idStr);
 
     getQpainter().restore();
 
@@ -234,7 +234,7 @@ void Ellipse::setEllipse(const QRect &e)
 
 void Ellipse::draw(QPaintDevice* device, const int translate_x, const int translate_y)
 {
-    //QString idStr = "ID: " + QString::number(getId());
+    QString idStr = "ID: " + QString::number(getId());
 
     getQpainter().begin(device);
 
@@ -250,8 +250,8 @@ void Ellipse::draw(QPaintDevice* device, const int translate_x, const int transl
     getQpainter().drawEllipse(ellipse);
 
     getQpainter().setPen(QColor(Qt::GlobalColor::black));
-    if(this->isCircle()) getQpainter().drawText(QPoint(ellipse.x()-20, ellipse.y()-20), "#7");
-    else getQpainter().drawText(QPoint(ellipse.x()-20, ellipse.y()-20), "#6");
+    //if(this->isCircle()) getQpainter().drawText(QPoint(ellipse.x()-20, ellipse.y()-20), "#7");
+    getQpainter().drawText(QPoint(ellipse.x()-20, ellipse.y()-20), idStr);
     getQpainter().restore();
 
     getQpainter().end();
@@ -281,7 +281,7 @@ void Text::setText(const QRect& tO, const QString t, const QColor c, const Qt::A
 
 void Text::draw(QPaintDevice* device, const int translate_x, const int translate_y)
 {
-    //QString idStr = "ID: " + QString::number(getId());
+    QString idStr = "ID: " + QString::number(getId());
 
     getQpainter().begin(device);
 
@@ -298,7 +298,7 @@ void Text::draw(QPaintDevice* device, const int translate_x, const int translate
 
     getQpainter().setPen(QColor(Qt::GlobalColor::black));
 
-    getQpainter().drawText(QPoint(textObj.x()+80, textObj.y()+10), "#8");
+    getQpainter().drawText(QPoint(textObj.x()+80, textObj.y()+10), idStr);
 
     getQpainter().restore();
 

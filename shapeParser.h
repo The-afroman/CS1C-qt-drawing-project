@@ -80,11 +80,13 @@ void inputShape(myVector<Shape*>& shapeVector)
     Qt::PenJoinStyle fetchPenJoinStyleEnum;
     Qt::GlobalColor fetchBrushColorEnum;
     Qt::BrushStyle fetchBrushStyleEnum;
-  //Qt::AlignmentFlag fetchAlignmentEnum
+    //Qt::AlignmentFlag fetchAlignmentEnum
     QFont::Style fetchFontStyleEnum;
     QFont::Weight fetchFontWeightEnum;
+    try {
 
     cout << "inside shape parser" << endl;
+
 
     fin.open(FILE_PATH);
 
@@ -95,8 +97,7 @@ void inputShape(myVector<Shape*>& shapeVector)
     else
     {
         cout << "file was not opened" << endl;
-        cin.ignore(1000, '\n');
-        cin.get();
+        throw (1);
     }
 
       fin >> garbage;
@@ -104,7 +105,6 @@ void inputShape(myVector<Shape*>& shapeVector)
 
       fin >> garbage;
       fin >> getShapeType;
-
       while (!fin.eof())
       {
         if (fin)
@@ -780,4 +780,10 @@ void inputShape(myVector<Shape*>& shapeVector)
       }  // end while loop
 
     fin.close();
+    }
+    catch(int)
+    {
+        fin.close();
+        cout << "\nfile was not opened try different Path\n";
+    }
 }

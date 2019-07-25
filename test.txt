@@ -41,7 +41,7 @@ BrushStyle: VerPattern
 
 ShapeId: 5
 ShapeType: Square
-ShapeDimensions: 350, 650, 300, 
+ShapeDimensions: 250, 150, 200, 
 PenColor: red
 PenWidth: 0
 PenStyle: SolidLine
@@ -63,7 +63,7 @@ BrushStyle: NoBrush
 
 ShapeId: 7
 ShapeType: Circle
-ShapeDimensions: 750, 150, 200
+ShapeDimensions: 750, 138, 200
 PenColor: black
 PenWidth: 12
 PenStyle: SolidLine
@@ -74,7 +74,7 @@ BrushStyle: SolidPattern
 
 ShapeId: 8
 ShapeType: Text
-ShapeDimensions: 250, 425, 500, 50
+ShapeDimensions: 250, 447, 500, 50
 TextString: Class Project 2 - 2D Graphics Modeler
 TextColor: blue
 TextAlignment: AlignCenter

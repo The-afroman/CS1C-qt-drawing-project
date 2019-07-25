@@ -10,7 +10,7 @@
 #include <Qt>
 #include "vector.h"
 
-const char FILE_PATH[60] = "/home/f/CS1C-project-new/CS1C-qt-shapes/shapes.txt";
+const char FILE_PATH[60] = "/home/f/CS1C-qt/qt-shapes-new/CS1C-qt-shapes/shapes.txt";
 
 class Shape
 {
@@ -76,8 +76,7 @@ public:
 
     virtual QPoint getPointBegin(){return QPoint(0,0);}
     virtual QPoint getPointEnd(){return QPoint(0,0);}
-    virtual myVector<QPoint>& getPoints(){myVector<QPoint> vect;
-                                          return vect;}
+    virtual myVector<QPoint>& getPoints(){return vect;}
     virtual QRect getRect(){return QRect();}
 
 protected:
@@ -90,6 +89,7 @@ private:
     ShapeType shape;
     QPen pen;
     QBrush brush;
+    myVector<QPoint> vect;
 };
 
 /***********LINE CLASS************/
